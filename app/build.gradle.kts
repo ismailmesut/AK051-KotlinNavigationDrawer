@@ -7,6 +7,10 @@ android {
     namespace = "com.ismailmesutmujde.kotlinnavigationdrawer"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.ismailmesutmujde.kotlinnavigationdrawer"
         minSdk = 24
@@ -35,6 +39,8 @@ android {
     }
 }
 
+val nav_version = "2.8.1"
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -45,4 +51,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Navigation Component
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 }
