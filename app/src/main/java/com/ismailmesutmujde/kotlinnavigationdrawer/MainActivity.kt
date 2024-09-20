@@ -3,6 +3,7 @@ package com.ismailmesutmujde.kotlinnavigationdrawer
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.ismailmesutmujde.kotlinnavigationdrawer.databinding.ActivityMainBinding
@@ -25,5 +26,13 @@ class MainActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(this, bindingMain.drawer, bindingMain.toolbar,0,0)
         bindingMain.drawer.addDrawerListener(toggle)
         toggle.syncState()
+    }
+
+    override fun onBackPressed() {
+        if (bindingMain.drawer.isDrawerOpen(GravityCompat.START)) {
+            bindingMain.drawer.closeDrawer(GravityCompat.START)
+        } else {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }
