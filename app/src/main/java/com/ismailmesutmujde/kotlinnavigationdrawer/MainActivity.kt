@@ -1,6 +1,8 @@
 package com.ismailmesutmujde.kotlinnavigationdrawer
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -26,8 +28,13 @@ class MainActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(this, bindingMain.drawer, bindingMain.toolbar,0,0)
         bindingMain.drawer.addDrawerListener(toggle)
         toggle.syncState()
+
+        val title = bindingMain.navigationView.inflateHeaderView(R.layout.navigation_title)
+        val textViewTitle = title.findViewById(R.id.textViewTitle) as TextView
+        textViewTitle.text = "Hello Kotlin"
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         if (bindingMain.drawer.isDrawerOpen(GravityCompat.START)) {
             bindingMain.drawer.closeDrawer(GravityCompat.START)
